@@ -88,21 +88,38 @@
     return null;
   }
 
+  // Entrée des cartes : elles apparaissent une à une, une seule fois, quand la grille devient visible
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function reveal(cards){
+    if(reduce || !('IntersectionObserver' in window)) return;
+    cards.forEach(c => c.classList.add('pc-enter'));
+    const io = new IntersectionObserver(entries => {
+      if(!entries.some(e => e.isIntersecting)) return;
+      io.disconnect();
+      cards.forEach((c, i) => setTimeout(() => { c.classList.add('pc-in'); c.classList.remove('pc-enter'); }, i * 70));
+    }, { threshold: .1 });
+    io.observe(grid);
+  }
+
   function render(list){
     let shown = Math.min(INITIAL, list.length);
-    const draw = () => {
+    const draw = (from = 0) => {
       grid.innerHTML = list.slice(0, shown).map(card).join('');
       more.hidden = shown >= list.length;
       more.textContent = `Afficher les ${list.length - shown} autres projets`;
+      reveal([...grid.children].slice(from));
     };
     draw();
-    count.textContent = String(list.length).padStart(2, '0');
-    more.onclick = () => { shown = list.length; draw(); };
+    const n = String(list.length).padStart(2, '0');
+    count.textContent = n;
+    const heroCount = document.getElementById('heroProjCount');
+    if(heroCount) heroCount.textContent = list.length;
+    more.onclick = () => { const from = shown; shown = list.length; draw(from); };
   }
 
   load().then(list => {
     if(list) render(list);
-    else { empty.hidden = false; count.textContent = '—'; }
+    else { empty.hidden = false; count.textContent = ''; }
   });
 })();
 

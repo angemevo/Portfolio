@@ -40,6 +40,8 @@ const TOKEN = PAT || process.env.GITHUB_TOKEN || '';
 const FIXTURES = process.env.FIXTURES_DIR;
 const HIDE_TOPICS = new Set(['portfolio-hide', 'no-portfolio']);
 const MIN_README_CHARS = 40;
+// Textes générés par défaut par les outils (flutter create, create-next-app…) : pas une vraie description
+const BOILERPLATE = /^(A new Flutter (project|application)|This project is a starting point|This is a \[?Next\.js\]? project|This project was bootstrapped with|This template should help|Getting Started)/i;
 const MAX_IMAGE_BYTES = 3 * 1024 * 1024;
 const IMAGE_EXT = ['png', 'jpg', 'jpeg', 'webp', 'gif'];
 
@@ -131,7 +133,9 @@ function readmeBody(md) {
 /** Premier paragraphe lisible du README, pour servir de description. */
 function firstParagraph(md) {
   const paras = readmeBody(md).split(/\n\s*\n/).map(p => p.replace(/\s+/g, ' ').trim());
-  const p = paras.find(x => x.length >= 25 && !/^(table des matières|sommaire|installation|table of contents)/i.test(x));
+  const p = paras.find(x => x.length >= 25
+    && !/^(table des matières|sommaire|installation|table of contents)/i.test(x)
+    && !BOILERPLATE.test(x));
   if (!p) return '';
   return p.length > 190 ? p.slice(0, 187).replace(/\s+\S*$/, '') + '…' : p;
 }
@@ -256,7 +260,7 @@ async function main() {
       repo: r.name,
       name: prettyName(r.name),
       emoji: EMOJI_BY_LANG[mainLang] || '🧪',
-      description: (r.description || '').trim() || firstParagraph(readme),
+      description: (BOILERPLATE.test((r.description || '').trim()) ? '' : (r.description || '').trim()) || firstParagraph(readme),
       stack,
       year: new Date(r.created_at).getFullYear(),
       image,
