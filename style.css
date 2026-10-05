@@ -764,7 +764,6 @@ footer{
 }
 .footer-logo span{color:var(--accent)}
 footer p{font-size:.75rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
-.footer-flag{font-size:1rem}
 
 /* ===========================
    REVEAL UTILITY
