@@ -1179,20 +1179,14 @@ html.is-loading,html.is-loading body{overflow:hidden}
   transition:opacity .6s ease,visibility .6s;
 }
 #loader.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
-.ld-box{width:min(240px,70vw);text-align:center;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.ld-box{width:min(560px,82vw);text-align:center;transition:transform .6s cubic-bezier(.16,1,.3,1)}
 #loader.is-leaving .ld-box{transform:translateY(-12px)}
 .ld-logo{
   font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:.14em;
   line-height:1;padding-left:.14em;color:var(--txt);
 }
 .ld-logo span{color:var(--accent)}
-.ld-net{display:block;width:100%;height:auto;margin:1.4rem 0 1rem;overflow:visible}
-.ld-net line{stroke:rgba(var(--fg-rgb),.12);stroke-width:1}
-.ld-net line.on{stroke:var(--accent2);transition:stroke .4s}
-.ld-net circle{fill:rgba(var(--fg-rgb),.25);transition:fill .3s,r .3s}
-.ld-net circle.on{fill:var(--accent);r:3.6}
-.ld-net circle.on.last{fill:var(--accent2)}
-.ld-line{height:2px;background:rgba(var(--fg-rgb),.1);overflow:hidden}
+.ld-line{height:3px;margin-top:1.75rem;border-radius:2px;background:rgba(var(--fg-rgb),.1);overflow:hidden}
 .ld-line i{
   display:block;height:100%;width:100%;
   background:linear-gradient(90deg,var(--accent),var(--accent2));
