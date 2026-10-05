@@ -6,7 +6,7 @@
 ========================================================= */
 (function(){
   const SOURCES = [
-    'https://raw.githubusercontent.com/angemevo/portfolio/master/data/projects.json',
+    'https://raw.githubusercontent.com/angemevo/Portfolio/master/data/projects.json',
     'data/projects.json',
   ];
   const INITIAL = 9;
