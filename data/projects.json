@@ -14,6 +14,8 @@
         "Supabase"
       ],
       "year": 2024,
+      "image": null,
+      "private": false,
       "github": "https://github.com/angemevo/otakuverse_V2",
       "demo": null,
       "featured": true
@@ -28,6 +30,8 @@
         "PostgreSQL"
       ],
       "year": 2024,
+      "image": null,
+      "private": false,
       "github": null,
       "demo": null,
       "featured": true
@@ -42,6 +46,8 @@
         "FastAPI"
       ],
       "year": 2023,
+      "image": null,
+      "private": false,
       "github": "https://github.com/angemevo/AgroFly",
       "demo": null,
       "featured": true
@@ -55,6 +61,8 @@
         "Python"
       ],
       "year": 2026,
+      "image": null,
+      "private": false,
       "github": "https://github.com/angemevo/Blueprint_Academy",
       "demo": null,
       "stars": 0,
@@ -65,13 +73,15 @@
       "repo": "App_Message",
       "name": "App Message",
       "emoji": "🌐",
-      "description": "A new Flutter project. Getting Started",
+      "description": "A few resources to get you started if this is your first Flutter project: Lab: Write your first Flutter app Cookbook: Useful Flutter samples",
       "stack": [
         "HTML",
         "C++",
         "CMake"
       ],
       "year": 2026,
+      "image": null,
+      "private": false,
       "github": "https://github.com/angemevo/App_Message",
       "demo": null,
       "stars": 0,
@@ -89,6 +99,8 @@
         "CMake"
       ],
       "year": 2025,
+      "image": null,
+      "private": false,
       "github": "https://github.com/angemevo/Yoomin-Projet",
       "demo": null,
       "stars": 0,
@@ -96,5 +108,5 @@
       "featured": false
     }
   ],
-  "generated": "2026-10-05T10:47:10.413Z"
+  "generated": "2026-10-05T13:30:52.074Z"
 }
