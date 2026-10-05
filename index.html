@@ -20,50 +20,44 @@
 <div id="cur-outer"></div>
 <canvas id="bg"></canvas>
 
-<!-- PHONE BOOT LOADER -->
-<div id="loader">
-  <div class="phone-glow"></div>
-  <div class="phone-shell" id="phoneShell">
-    <div class="phone-notch"></div>
-    <div class="phone-btn" id="phonePowerBtn"></div>
-    <div class="phone-vol1"></div>
-    <div class="phone-vol2"></div>
-    <div class="phone-bar"></div>
+<!-- ÉCRAN DE CHARGEMENT -->
+<div id="loader" role="progressbar" aria-label="Chargement du portfolio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+  <div class="ld-grid" aria-hidden="true"></div>
+  <div class="ld-scan" aria-hidden="true"></div>
 
-    <div class="phone-screen" id="phoneScreen">
+  <!-- coins du cadre HUD -->
+  <span class="ld-corner tl" aria-hidden="true"></span><span class="ld-corner tr" aria-hidden="true"></span>
+  <span class="ld-corner bl" aria-hidden="true"></span><span class="ld-corner br" aria-hidden="true"></span>
 
-      <!-- Layer 0: pure black default -->
-      <div class="boot-layer boot-dark active" id="layerDark"></div>
+  <div class="ld-top" aria-hidden="true">
+    <span>MAG.SYS</span>
+    <span id="ldClock">--:--:--</span>
+  </div>
 
-      <!-- Layer 1: boot logo -->
-      <div class="boot-layer boot-logo-layer" id="layerBoot">
-        <div class="boot-logo-name">MAG.</div>
-        <div class="boot-sub">Mevo Ange-Gaël</div>
-        <div class="boot-progress-wrap">
-          <div class="boot-progress-fill" id="bootBar"></div>
-        </div>
-        <div class="boot-version">v1.0 · dev.mobile</div>
-      </div>
-
-      <!-- Layer 2: home/lock screen -->
-      <div class="boot-layer boot-home" id="layerHome">
-      <div class="swipe-cover" id="swipeCover"></div>
-        <div class="home-apps">
-          <div class="app-icon" style="background:rgba(255,77,28,.3)">📱</div>
-          <div class="app-icon" style="background:rgba(0,229,200,.2)">⚙️</div>
-          <div class="app-icon" style="background:rgba(168,85,247,.25)">🎮</div>
-          <div class="app-icon" style="background:rgba(255,201,61,.2)">🌸</div>
-          <div class="app-icon" style="background:rgba(0,229,200,.2)">💬</div>
-          <div class="app-icon" style="background:rgba(255,77,28,.2)">💳</div>
-          <div class="app-icon" style="background:rgba(168,85,247,.2)">🌐</div>
-          <div class="app-icon" style="background:rgba(255,201,61,.25)">📊</div>
-        </div>
-        <div class="home-time" id="homeTime">--:--</div>
-        <div class="home-date">Dev · Mobile · Web</div>
-        <div class="swipe-finger">👆</div>
-      </div>
-
+  <div class="ld-center">
+    <div class="ld-emblem" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <circle class="ld-ring-bg" cx="100" cy="100" r="88"/>
+        <circle class="ld-ring" id="ldRing" cx="100" cy="100" r="88"/>
+        <circle class="ld-ring-dash" cx="100" cy="100" r="74"/>
+        <circle class="ld-ring-dash2" cx="100" cy="100" r="96"/>
+      </svg>
+      <div class="ld-logo">MAG<span>.</span></div>
     </div>
+
+    <div class="ld-title">Mevo Ange-Gaël</div>
+
+    <div class="ld-bar" aria-hidden="true"><div class="ld-segs" id="ldSegs"></div></div>
+    <div class="ld-meta">
+      <span class="ld-status" id="ldStatus">Initialisation du système</span>
+      <span class="ld-pct"><span id="ldPct">0</span>%</span>
+    </div>
+    <ul class="ld-log" id="ldLog" aria-hidden="true"></ul>
+  </div>
+
+  <div class="ld-bottom">
+    <p class="ld-tip"><span>Astuce</span> <span id="ldTip"></span></p>
+    <p class="ld-press" id="ldPress">Appuyer sur une touche ou toucher l'écran</p>
   </div>
 </div>
 
@@ -379,6 +373,7 @@
 <!-- ============ SCRIPTS ============ -->
 
 
+<script src="loader.js"></script>
 <script src="script.js"></script>
 <script src="neural.js"></script>
 <script src="projects.js"></script>
