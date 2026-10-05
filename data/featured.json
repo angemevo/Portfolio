@@ -1,0 +1,28 @@
+{
+  "_aide": "Projets mis en avant, affichés en premier et dans cet ordre. 'repo' relie l'entrée à un repo GitHub : tes textes remplacent alors ceux générés automatiquement. Sans 'repo', le projet est affiché tel quel. Champs optionnels : emoji, description, stack, year, demo.",
+  "projects": [
+    {
+      "repo": "otakuverse_V2",
+      "name": "Otakuverse",
+      "emoji": "🌸",
+      "description": "Réseau social pour passionnés d'anime & manga. Éditeur de stories façon Instagram, feed adaptatif, likes optimistes, profils avec badges vérifiés.",
+      "stack": ["Flutter", "NestJS", "Supabase"],
+      "year": 2024
+    },
+    {
+      "name": "Blue",
+      "emoji": "💳",
+      "description": "Application pour le transport ivoirien avec paiement sans contact par NFC.",
+      "stack": ["Flutter", "Django", "PostgreSQL"],
+      "year": 2024
+    },
+    {
+      "repo": "AgroFly",
+      "name": "AgroFly",
+      "emoji": "🛸",
+      "description": "Gestion de plantation assistée par drone : pilotage en temps réel, suivi GPS, météo intégrée et statistiques détaillées. 1er prix Ivorian Genius Contest.",
+      "stack": ["Flutter", "FastAPI"],
+      "year": 2023
+    }
+  ]
+}

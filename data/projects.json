@@ -1,0 +1,51 @@
+{
+  "user": "angemevo",
+  "profile": "https://github.com/angemevo",
+  "count": 3,
+  "projects": [
+    {
+      "repo": "otakuverse_V2",
+      "name": "Otakuverse",
+      "emoji": "🌸",
+      "description": "Réseau social pour passionnés d'anime & manga. Éditeur de stories façon Instagram, feed adaptatif, likes optimistes, profils avec badges vérifiés.",
+      "stack": [
+        "Flutter",
+        "NestJS",
+        "Supabase"
+      ],
+      "year": 2024,
+      "github": "https://github.com/angemevo/otakuverse_V2",
+      "demo": null,
+      "featured": true
+    },
+    {
+      "name": "Blue",
+      "emoji": "💳",
+      "description": "Application pour le transport ivoirien avec paiement sans contact par NFC.",
+      "stack": [
+        "Flutter",
+        "Django",
+        "PostgreSQL"
+      ],
+      "year": 2024,
+      "github": null,
+      "demo": null,
+      "featured": true
+    },
+    {
+      "repo": "AgroFly",
+      "name": "AgroFly",
+      "emoji": "🛸",
+      "description": "Gestion de plantation assistée par drone : pilotage en temps réel, suivi GPS, météo intégrée et statistiques détaillées. 1er prix Ivorian Genius Contest.",
+      "stack": [
+        "Flutter",
+        "FastAPI"
+      ],
+      "year": 2023,
+      "github": "https://github.com/angemevo/AgroFly",
+      "demo": null,
+      "featured": true
+    }
+  ],
+  "generated": "2026-10-05T10:36:16.787Z"
+}

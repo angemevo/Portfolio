@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mevo Ange-Gaël · Dev Mobile & Web</title>
+<script>
+  (function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}})();
+</script>
+<meta name="color-scheme" content="dark light">
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -73,10 +77,16 @@
     <li><a href="#awards" class="nav-link-m">Awards</a></li>
     <li><a href="#contact" class="nav-link-m">Contact</a></li>
   </ul>
+  <div class="nav-right">
+  <button class="theme-toggle" type="button" data-theme-toggle aria-label="Passer en mode clair">
+    <svg class="ti-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+    <svg class="ti-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8z"/></svg>
+  </button>
   <a href="#contact" class="nav-cta desktop-only"><span>Disponible →</span></a>
   <button class="burger" id="burger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
+  </div>
 </nav>
 <!-- Mobile overlay -->
 <div class="mobile-overlay" id="mobileOverlay">
@@ -211,94 +221,25 @@
 </section>
 
 <!-- ====== PROJECTS ====== -->
+<!-- Les cartes sont générées depuis data/projects.json (mis à jour chaque jour par
+     .github/workflows/sync-projects.yml). Pour mettre un projet en avant ou changer
+     son texte : data/featured.json. -->
 <section id="projects">
   <div class="projects-top">
     <div>
       <span class="s-label rev">Réalisations</span>
       <div class="projects-count rev d1">
-        <div class="num">06</div>
-        <div>PROJETS RÉALISÉS</div>
+        <div class="num" id="projCount">—</div>
+        <div>PROJETS</div>
       </div>
     </div>
-    <a href="#" class="view-all rev">Tous les projets →</a>
+    <a href="https://github.com/angemevo?tab=repositories" class="view-all rev" target="_blank" rel="noopener">Tous mes repos sur GitHub</a>
   </div>
 
-  <div class="projects-scroll-wrap">
-    <div class="projects-row" id="projRow">
-      <div class="proj-card">
-        <div class="proj-thumb">
-          <div class="proj-thumb-bg" style="background:linear-gradient(145deg,#1a0040,#3d0080,#000d40)"></div>
-          <span class="proj-thumb-emoji">🌸</span>
-          <div class="proj-thumb-overlay"></div>
-        </div>
-        <div class="proj-body">
-          <span class="proj-number">// 01</span>
-          <div class="proj-name">OTAKUVERSE</div>
-          <p class="proj-desc">Réseau social pour passionnés d'anime &amp; manga. Stories editor Instagram-style, feed adaptatif, système de likes optimiste, profils avec badges vérifiés.</p>
-          <div class="proj-stack">
-            <span class="proj-tag pt1">Flutter</span>
-            <span class="proj-tag pt2">NestJS</span>
-            <span class="proj-tag pt3">Supabase</span>
-          </div>
-        </div>
-        <div class="proj-footer">
-          <div class="proj-links">
-            <a class="proj-link pl-gh" href="https://github.com/angemevo/otakuverse_V2">GitHub</a>
-          </div>
-          <span class="proj-yr">2024</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-thumb">
-          <div class="proj-thumb-bg" style="background:linear-gradient(145deg,#002200,#004400,#001100)"></div>
-          <span class="proj-thumb-emoji">💳</span>
-          <div class="proj-thumb-overlay"></div>
-        </div>
-        <div class="proj-body">
-          <span class="proj-number">// 02</span>
-          <div class="proj-name">Blue</div>
-          <p class="proj-desc">Application axé sur le transport Ivoirien utilisant le paiement par NFC </p>
-          <div class="proj-stack">
-            <span class="proj-tag pt1">Flutter</span>
-            <span class="proj-tag pt4">Django</span>
-            <span class="proj-tag pt3">PostgreSQL</span>
-          </div>
-        </div>
-        <div class="proj-footer">
-          <div class="proj-links">
-            <a class="proj-link pl-gh" href="#">GitHub</a>
-          </div>
-          <span class="proj-yr">2024</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-thumb">
-          <div class="proj-thumb-bg" style="background:linear-gradient(145deg,#1a0e00,#3d2200,#0d0700)"></div>
-          <span class="proj-thumb-emoji">🤖</span>
-          <div class="proj-thumb-overlay"></div>
-        </div>
-        <div class="proj-body">
-          <span class="proj-number">// 05</span>
-          <div class="proj-name">Agrofly</div>
-          <p class="proj-desc">Une appli mobile de gestion de plantation assisté par drone 
-                        avec commande des drones en temps réel, tracking GPS, intégration API Météo
-                        et statistique détaillé.</p>
-          <div class="proj-stack">
-            <span class="proj-tag pt1">Flutter</span>
-            <span class="proj-tag pt4">FastApi</span>
-          </div>
-        </div>
-        <div class="proj-footer">
-          <div class="proj-links">
-            <a class="proj-link pl-gh" href="https://github.com/angemevo/AgroFly">GitHub</a>
-          </div>
-          <span class="proj-yr">2023</span>
-        </div>
-      </div>
-
-    </div>
+  <div class="projects-grid" id="projGrid" aria-live="polite"></div>
+  <p class="projects-empty" id="projEmpty" hidden>Les projets n'ont pas pu être chargés. <a href="https://github.com/angemevo?tab=repositories" target="_blank" rel="noopener">Voir mes repos sur GitHub</a>.</p>
+  <div class="projects-more">
+    <button type="button" class="projects-more-btn" id="projMore" hidden>Afficher plus de projets</button>
   </div>
 </section>
 
@@ -375,19 +316,19 @@
         </div>
         <p class="c-sub rev d2">Disponible pour des projets freelance, collaborations et nouvelles opportunités. Je réponds généralement sous 24h.</p>
         <div class="contact-links rev d3">
-          <a href="/cdn-cgi/l/email-protection#5e3f30393b70333b28311e3b333f3732703d3133" class="c-link email">
+          <a href="mailto:ange.mevo@email.com" class="c-link email">
             <span class="c-link-icon">✉️</span>
             <div class="c-link-info">
               <div class="c-link-label">Email</div>
-              <div class="c-link-val"><span class="__cf_email__" data-cfemail="9dfcf3faf8b3f0f8ebf2ddf8f0fcf4f1b3fef2f0">[email&#160;protected]</span></div>
+              <div class="c-link-val">ange.mevo@email.com</div>
             </div>
             <span class="c-link-arrow">→</span>
           </a>
-          <a href="#" class="c-link gh">
+          <a href="https://github.com/angemevo" class="c-link gh" target="_blank" rel="noopener">
             <span class="c-link-icon">⌨️</span>
             <div class="c-link-info">
               <div class="c-link-label">GitHub</div>
-              <div class="c-link-val">github.com/mevo-ange</div>
+              <div class="c-link-val">github.com/angemevo</div>
             </div>
             <span class="c-link-arrow">→</span>
           </a>
@@ -424,7 +365,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">MAG<span>.</span></div>
-  <p>© 2024 Mevo Ange-Gaël · Tous droits réservés</p>
+  <p>© <span id="year">2026</span> Mevo Ange-Gaël · Tous droits réservés</p>
   <p>Conçu depuis Abidjan <span class="footer-flag">🇨🇮</span></p>
 </footer>
 
@@ -432,5 +373,7 @@
 
 
 <script src="script.js"></script>
+<script src="neural.js"></script>
+<script src="projects.js"></script>
 </body>
 </html>

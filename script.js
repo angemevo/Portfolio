@@ -178,9 +178,11 @@ document.addEventListener('mousemove',e=>{
   curO.style.left=ox+'px';curO.style.top=oy+'px';
   requestAnimationFrame(animCursor);
 })();
-document.querySelectorAll('a,button,.proj-card,.t-pill,.about-tag,.tl-card,.c-link').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
+const HOVER_SEL='a,button,.proj-card,.t-pill,.about-tag,.tl-card,.c-link';
+document.addEventListener('mouseover',e=>{if(e.target.closest(HOVER_SEL))document.body.classList.add('hovering')});
+document.addEventListener('mouseout',e=>{
+  const from=e.target.closest(HOVER_SEL),to=e.relatedTarget&&e.relatedTarget.closest?e.relatedTarget.closest(HOVER_SEL):null;
+  if(from&&!to)document.body.classList.remove('hovering');
 });
 
 /* ---- PROGRESS BAR ---- */
@@ -190,38 +192,6 @@ window.addEventListener('scroll',()=>{
   pb.style.width=p+'%';
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
 });
-
-/* ---- CANVAS MESH GRADIENT ---- */
-const canvas=document.getElementById('bg');
-const ctx=canvas.getContext('2d');
-let W,H;
-function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
-resize();window.addEventListener('resize',resize);
-const blobs=[
-  {x:.2,y:.3,r:.35,color:'rgba(255,77,28,.07)',vx:.0003,vy:.0002},
-  {x:.8,y:.2,r:.3,color:'rgba(0,229,200,.05)',vx:-.0002,vy:.0003},
-  {x:.5,y:.7,r:.4,color:'rgba(168,85,247,.06)',vx:.0002,vy:-.0002},
-  {x:.1,y:.8,r:.25,color:'rgba(255,201,61,.05)',vx:.0003,vy:-.0003},
-];
-let t=0;
-function drawBg(){
-  ctx.clearRect(0,0,W,H);
-  t+=.5;
-  blobs.forEach(b=>{
-    b.x+=b.vx;b.y+=b.vy;
-    if(b.x<0||b.x>1)b.vx*=-1;if(b.y<0||b.y>1)b.vy*=-1;
-    const grd=ctx.createRadialGradient(b.x*W,b.y*H,0,b.x*W,b.y*H,b.r*Math.max(W,H));
-    grd.addColorStop(0,b.color);grd.addColorStop(1,'transparent');
-    ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
-  });
-  // grid
-  ctx.strokeStyle='rgba(255,255,255,.015)';ctx.lineWidth=1;
-  const gs=80;
-  for(let x=0;x<W;x+=gs){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
-  for(let y=0;y<H;y+=gs){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
-  requestAnimationFrame(drawBg);
-}
-drawBg();
 
 /* ---- CODE BG removed — real photo in use ---- */
 
@@ -275,16 +245,22 @@ const coObs=new IntersectionObserver(entries=>{
 },{threshold:.5});
 counters.forEach(c=>coObs.observe(c));
 
-/* ---- 3D TILT proj cards ---- */
-document.querySelectorAll('.proj-card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
+/* ---- 3D TILT proj cards (délégation : marche pour les cartes générées) ---- */
+const canHover=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(canHover&&!reduceMotion){
+  let tilted=null;
+  document.addEventListener('mousemove',e=>{
+    const card=e.target.closest&&e.target.closest('.proj-card');
+    if(tilted&&tilted!==card){tilted.style.transform='';tilted=null;}
+    if(!card)return;
+    tilted=card;
     const r=card.getBoundingClientRect();
     const x=(e.clientX-r.left)/r.width-.5;
     const y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`translateY(-8px) perspective(600px) rotateX(${-y*6}deg) rotateY(${x*6}deg)`;
+    card.style.transform=`translateY(-6px) perspective(700px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;
   });
-  card.addEventListener('mouseleave',()=>card.style.transform='');
-});
+}
 
 /* ---- HERO PARALLAX ---- */
 document.addEventListener('mousemove',e=>{
@@ -292,14 +268,6 @@ document.addEventListener('mousemove',e=>{
   const y=(e.clientY/window.innerHeight-.5)*20;
   document.querySelector('.hero-title').style.transform=`translate(${x*.3}px,${y*.3}px)`;
 });
-
-/* ---- HORIZONTAL DRAG SCROLL projects ---- */
-const wrap=document.querySelector('.projects-scroll-wrap');
-let isDragging=false,startX,scrollL;
-wrap.addEventListener('mousedown',e=>{isDragging=true;startX=e.pageX-wrap.offsetLeft;scrollL=wrap.scrollLeft;wrap.style.cursor='grabbing'});
-wrap.addEventListener('mouseleave',()=>{isDragging=false;wrap.style.cursor='default'});
-wrap.addEventListener('mouseup',()=>{isDragging=false;wrap.style.cursor='default'});
-wrap.addEventListener('mousemove',e=>{if(!isDragging)return;e.preventDefault();const x=e.pageX-wrap.offsetLeft;wrap.scrollLeft=scrollL-(x-startX)*1.5});
 
 /* ---- MAGNETIC BUTTONS ---- */
 document.querySelectorAll('.btn-mag,.nav-cta').forEach(btn=>{
