@@ -245,66 +245,12 @@ const coObs=new IntersectionObserver(entries=>{
 },{threshold:.5});
 counters.forEach(c=>coObs.observe(c));
 
-/* ---- 3D TILT proj cards (délégation : marche pour les cartes générées) ---- */
-const canHover=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
-const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(canHover&&!reduceMotion){
-  let tilted=null;
-  document.addEventListener('mousemove',e=>{
-    const card=e.target.closest&&e.target.closest('.proj-card');
-    if(tilted&&tilted!==card){tilted.style.transform='';tilted=null;}
-    if(!card)return;
-    tilted=card;
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`translateY(-6px) perspective(700px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;
-  });
-}
-
-/* ---- HERO PARALLAX ---- */
-document.addEventListener('mousemove',e=>{
-  const x=(e.clientX/window.innerWidth-.5)*20;
-  const y=(e.clientY/window.innerHeight-.5)*20;
-  document.querySelector('.hero-title').style.transform=`translate(${x*.3}px,${y*.3}px)`;
-});
-
-/* ---- MAGNETIC BUTTONS ---- */
-document.querySelectorAll('.btn-mag,.nav-cta').forEach(btn=>{
-  btn.addEventListener('mousemove',e=>{
-    const r=btn.getBoundingClientRect();
-    const x=(e.clientX-r.left-r.width/2)*.3;
-    const y=(e.clientY-r.top-r.height/2)*.3;
-    btn.style.transform=`translate(${x}px,${y}px)`;
-  });
-  btn.addEventListener('mouseleave',()=>btn.style.transform='');
-});
-
 /* ---- CONTACT FORM FAKE SUBMIT ---- */
 document.getElementById('cfBtn').addEventListener('click',function(){
   this.classList.add('sent');
   setTimeout(()=>this.classList.remove('sent'),3000);
 });
 
-
-/* ---- GLITCH TITLE on hover ---- */
-const heroLines=document.querySelectorAll('.hero-title .line span');
-heroLines.forEach(line=>{
-  line.addEventListener('mouseenter',()=>{
-    const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*';
-    const orig=line.textContent;
-    let i=0;
-    const t=setInterval(()=>{
-      line.textContent=orig.split('').map((c,j)=>{
-        if(c===' ')return ' ';
-        if(j<i)return c;
-        return chars[Math.floor(Math.random()*chars.length)];
-      }).join('');
-      if(i>=orig.length){clearInterval(t);line.textContent=orig;}
-      i+=2;
-    },30);
-  });
-});
 
 /* ---- GAME EASTER EGG: Konami code unlocks game mode ---- */
 const konamiCode=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
