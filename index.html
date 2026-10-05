@@ -22,42 +22,14 @@
 
 <!-- ÉCRAN DE CHARGEMENT -->
 <div id="loader" role="progressbar" aria-label="Chargement du portfolio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-  <div class="ld-grid" aria-hidden="true"></div>
-  <div class="ld-scan" aria-hidden="true"></div>
-
-  <!-- coins du cadre HUD -->
-  <span class="ld-corner tl" aria-hidden="true"></span><span class="ld-corner tr" aria-hidden="true"></span>
-  <span class="ld-corner bl" aria-hidden="true"></span><span class="ld-corner br" aria-hidden="true"></span>
-
-  <div class="ld-top" aria-hidden="true">
-    <span>MAG.SYS</span>
-    <span id="ldClock">--:--:--</span>
-  </div>
-
-  <div class="ld-center">
-    <div class="ld-emblem" aria-hidden="true">
-      <svg viewBox="0 0 200 200">
-        <circle class="ld-ring-bg" cx="100" cy="100" r="88"/>
-        <circle class="ld-ring" id="ldRing" cx="100" cy="100" r="88"/>
-        <circle class="ld-ring-dash" cx="100" cy="100" r="74"/>
-        <circle class="ld-ring-dash2" cx="100" cy="100" r="96"/>
-      </svg>
-      <div class="ld-logo">MAG<span>.</span></div>
-    </div>
-
-    <div class="ld-title">Mevo Ange-Gaël</div>
-
-    <div class="ld-bar" aria-hidden="true"><div class="ld-segs" id="ldSegs"></div></div>
-    <div class="ld-meta">
-      <span class="ld-status" id="ldStatus">Initialisation du système</span>
-      <span class="ld-pct"><span id="ldPct">0</span>%</span>
-    </div>
-    <ul class="ld-log" id="ldLog" aria-hidden="true"></ul>
-  </div>
-
-  <div class="ld-bottom">
-    <p class="ld-tip"><span>Astuce</span> <span id="ldTip"></span></p>
-    <p class="ld-press" id="ldPress">Appuyer sur une touche ou toucher l'écran</p>
+  <div class="ld-box">
+    <div class="ld-logo">MAG<span>.</span></div>
+    <svg class="ld-net" viewBox="0 0 240 60" aria-hidden="true">
+      <g class="ld-edges"></g>
+      <g class="ld-nodes"></g>
+    </svg>
+    <div class="ld-line"><i id="ldFill"></i></div>
+    <div class="ld-pct"><span id="ldPct">0</span>%</div>
   </div>
 </div>
 
