@@ -1,7 +1,7 @@
 {
   "user": "angemevo",
   "profile": "https://github.com/angemevo",
-  "count": 3,
+  "count": 6,
   "projects": [
     {
       "repo": "otakuverse_V2",
@@ -45,7 +45,56 @@
       "github": "https://github.com/angemevo/AgroFly",
       "demo": null,
       "featured": true
+    },
+    {
+      "repo": "Blueprint_Academy",
+      "name": "Blueprint Academy",
+      "emoji": "🐍",
+      "description": "Plateforme web d'apprentissage pratique d'Unreal Engine Blueprint. Philosophie : Learn → Practice → Build → Validate → Progress.",
+      "stack": [
+        "Python"
+      ],
+      "year": 2026,
+      "github": "https://github.com/angemevo/Blueprint_Academy",
+      "demo": null,
+      "stars": 0,
+      "updated": "2026-09-26T14:15:09Z",
+      "featured": false
+    },
+    {
+      "repo": "App_Message",
+      "name": "App Message",
+      "emoji": "🌐",
+      "description": "A new Flutter project. Getting Started",
+      "stack": [
+        "HTML",
+        "C++",
+        "CMake"
+      ],
+      "year": 2026,
+      "github": "https://github.com/angemevo/App_Message",
+      "demo": null,
+      "stars": 0,
+      "updated": "2026-01-04T23:58:47Z",
+      "featured": false
+    },
+    {
+      "repo": "Yoomin-Projet",
+      "name": "Yoomin Projet",
+      "emoji": "📱",
+      "description": "Écosystème de gestion de projets immobiliers avec API NestJS et application mobile Flutter. Architecture Démarrage Rapide Prérequis 1. Node.js 18+ 2. Flutter SDK 3.0+ 3. Émulateur…",
+      "stack": [
+        "Flutter / Dart",
+        "C++",
+        "CMake"
+      ],
+      "year": 2025,
+      "github": "https://github.com/angemevo/Yoomin-Projet",
+      "demo": null,
+      "stars": 0,
+      "updated": "2025-09-04T01:04:39Z",
+      "featured": false
     }
   ],
-  "generated": "2026-10-05T10:36:16.787Z"
+  "generated": "2026-10-05T10:47:10.413Z"
 }
