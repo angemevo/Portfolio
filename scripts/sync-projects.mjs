@@ -32,7 +32,7 @@ const FEATURED = path.join(ROOT, 'data', 'featured.json');
 const MANUAL_DIR = path.join(ROOT, 'captures');
 const AUTO_DIR = path.join(ROOT, 'data', 'captures');
 
-const [repoOwner, repoName] = (process.env.GITHUB_REPOSITORY || 'angemevo/portfolio').split('/');
+const [repoOwner, repoName] = (process.env.GITHUB_REPOSITORY || 'angemevo/Portfolio').split('/');
 const USER = process.env.GITHUB_USER || repoOwner;
 const SELF = repoName.toLowerCase();
 const PAT = process.env.PORTFOLIO_TOKEN || '';
